@@ -1,44 +1,61 @@
-# team-skills
+# personal-skills
 
-Shared Claude Code skills for the Dragonfly team.
+Personal collection of Claude Code **skills** and **agents**. Each is symlinked into
+`~/.claude/` so it's available globally in Claude Code.
 
 ## Install
 
 ```bash
-git clone <this-repo> ~/team-skills
-make -C ~/team-skills link-all-skills      # link all skills
-make -C ~/team-skills help                 # list all targets
-make -C ~/team-skills link-jira-skill      # link just one skill
+git clone <this-repo> ~/personal-skills
+make -C ~/personal-skills link-all          # link all skills + agents
+make -C ~/personal-skills help              # list all targets
+make -C ~/personal-skills link-all-skills   # just the skills
+make -C ~/personal-skills link-all-agents   # just the agents
 ```
 
-Each skill is symlinked into `~/.claude/skills/`. If you already have a personal skill with the same name (a real directory, not a symlink), it is left untouched and a warning is printed. `make link-all-skills` is idempotent — re-running is safe, and after a `git pull` you don't strictly need to re-run since the symlinks point at the live repo directory.
+Skills are symlinked into `~/.claude/skills/`, agents into `~/.claude/agents/`. If a
+target name already exists as a real file/dir (not a symlink), it's left untouched and
+a warning is printed. `make link-all` is idempotent — re-running is safe, and after a
+`git pull` you don't strictly need to re-run since symlinks point at the live repo.
+
+## Layout
+
+```
+personal-skills/
+├── skills/<name>/SKILL.md   # each skill is a directory (+ optional references/, scripts/)
+├── agents/<name>.md         # each agent is a single .md file
+├── .claude/skills/          # repo-private skill for maintaining this repo (not linked out)
+├── Makefile
+└── README.md
+```
+
+The Makefile discovers content by location: skills from `skills/*/SKILL.md`, agents from
+`agents/*.md` (excluding `agents/README.md`). Put files in the right place and they're
+picked up automatically — no Makefile edits needed.
 
 ## Skills
 
 | Skill | Trigger | Description |
 |-------|---------|-------------|
+| [code-walkthrough](skills/code-walkthrough/SKILL.md) | 「帶我了解這段流程」/ "walk me through X" | Guided narrative tour of existing code along one real execution path. |
 
-## Adding a new skill
+## Agents
 
-1. Create a subdirectory: `team-skills/<skill-name>/`
-2. Add a `SKILL.md` with the required frontmatter:
-   ```markdown
-   ---
-   name: skill-name
-   description: >
-     One paragraph describing when Claude should activate this skill.
-   ---
-   ```
-3. Optionally add `references/` (markdown docs) and `scripts/` (helper scripts)
-4. Run `make link-all-skills` again — it picks up any new subdirectory automatically (the Makefile discovers skills via `*/SKILL.md`)
+| Agent | When invoked | Description |
+|-------|--------------|-------------|
+| _(none yet)_ | | |
 
-## Structure of a skill
+## Adding a skill
 
-```
-skill-name/
-├── SKILL.md          # Required — frontmatter + instructions for Claude
-├── references/       # Optional — markdown docs Claude loads for context
-│   └── *.md
-└── scripts/          # Optional — helper scripts Claude can run
-    └── *.py
-```
+1. Create `skills/<name>/SKILL.md` with `name` + `description` frontmatter.
+2. Add a row to the **Skills** table above.
+3. `make link-all-skills`.
+
+## Adding an agent
+
+1. Create `agents/<name>.md` with `name` + `description` frontmatter (see [agents/README.md](agents/README.md)).
+2. Add a row to the **Agents** table above.
+3. `make link-all-agents`.
+
+> Working inside this repo, the private `repo-maintainer` skill (in `.claude/skills/`)
+> walks Claude through all of the above and keeps things in sync.
