@@ -38,6 +38,7 @@ picked up automatically — no Makefile edits needed.
 | Skill | Trigger | Description |
 |-------|---------|-------------|
 | [code-walkthrough](skills/code-walkthrough/SKILL.md) | 「帶我了解這段流程」/ "walk me through X" | Guided narrative tour of existing code along one real execution path. |
+| [mini-sprints](skills/mini-sprints/SKILL.md) | `/mini-sprints` /「規劃這個 ticket / 這份 plan」「規劃下一個 iteration」 | Iterative dev workflow: split one work unit's requirement→design→implementation into deliberately narrow mini-sprints. |
 
 ## Agents
 

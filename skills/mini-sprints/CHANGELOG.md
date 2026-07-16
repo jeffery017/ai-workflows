@@ -3,6 +3,27 @@
 記錄 skill 每次改善的「改了什麼 / 為什麼 / 影響段落」。維護方式見 `SKILL.md` 的
 「維護與自我演進」。最新在上；日期為 skill 改動日。
 
+## 2026-07-16 — 新增兩條約束：架構先行、小任務豁免
+**改了什麼：** Phase 1 漸進式段新增「漸進式只放寬需求細節、不放寬整體架構」——拆 scope
+前必須先有整體架構與流程的設計掌握（需要時落成 `design.md`）。Phase 2 新增「任務夠小就
+別硬拆」，範圍單純時允許一個 iteration 完成。
+**為什麼：** 防止「漸進式」被誤讀成兩種極端：一是只顧眼前細部 scope、缺整體架構骨架，
+各刀難整合；二是連單純小任務也硬套多刀切割的儀式。兩條把 skill 的適用邊界講清楚。
+**影響段落：** Phase 1「漸進式定義需求」；Phase 2「目標」後。
+**來源：** 使用者提出的兩條約束。
+
+## 2026-07-16 — 三件套對齊：新增 README.md、SKILL.md 瘦身
+**改了什麼：** 新增 `README.md`（給人的設計說明：動機 / 瀑布式痛點 / 檔案結構取捨 / 演進
+脈絡；含一個跑到一半的工作單元範例目錄樹，讓人感受實際長相）。SKILL.md「為什麼存在」段重寫為精簡的「核心心法」，把展開的問題論述與設計取捨移到
+README，避免與 README 重複；各 Phase 內驅動判斷的 why 保留。
+**為什麼：** repo-maintainer 新增「skill 三件套」不變式（README.md / CHANGELOG.md /
+SKILL.md 內 self-improve 段），要求 README 給人、SKILL 給 Claude、受眾不同不混寫。
+mini-sprints 原本缺 README，且設計動機混在 SKILL.md。
+**影響段落：** 新增 `README.md`；SKILL.md「為什麼存在」→「核心心法」；Phase 1「漸進式
+定義需求」段去重（刪與核心心法重複的「整體需求可模糊、scope 要清晰」）並拆掉論證瀑布式
+痛點的辯護句（已入 README）。
+**來源：** 使用者要求依 repo-maintainer 新規則 review mini-sprints。
+
 ## 2026-06-25 — 自我演進機制標準化
 **改了什麼：** `SKILL.md` 新增「維護與自我演進（skill self-improve）」章節；新增本
 `CHANGELOG.md`。並定義 CHANGELOG 紀錄紀律：**只記實質改動**（新概念 / 定義 / 流程變更、
